@@ -1,0 +1,8 @@
+{
+    "Graph" : {     # configure diagram-generation options here:
+        "DisplayDetails"        : 1,
+        "DisplayStretched"      : 0,
+        "DisplaySemaphoreBoxes" : 1,
+	  "DuplicateTables"       : 1,
+    }
+}
