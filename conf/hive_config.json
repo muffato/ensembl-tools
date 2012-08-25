@@ -1,4 +1,9 @@
 {
+    "Meadow" : {    # configure Meadow-specific options here:
+        "LOCAL" : {
+            "TotalRunningWorkersMax"   : 4,
+	  }
+    },
     "Graph" : {     # configure diagram-generation options here:
         "DisplayDetails"        : 1,
         "DisplayStretched"      : 0,
