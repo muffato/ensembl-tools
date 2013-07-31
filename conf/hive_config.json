@@ -1,5 +1,8 @@
 {
     "Meadow" : {    # configure Meadow-specific options here:
+        "LSF" : {
+            "TotalRunningWorkersMax"    : 3000,
+	  },
         "LOCAL" : {
             "TotalRunningWorkersMax"   : 4,
 	  }
