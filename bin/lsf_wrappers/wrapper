@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use File::Basename ();
+
+my $this_script_name = File::Basename::basename($0);
+
+my @cmd;
+foreach my $a (@ARGV) {
+    $a =~ s/\/home\/matthieu/\/homes\/muffato/g;
+    push @cmd, $a;
+}
+
+my $path = $ENV{PWD};
+$path =~ s/\/home\/matthieu/\/homes\/muffato/;
+
+exec('/usr/bin/ssh', '-qtX', 'ebi-cli.ebi.ac.uk',  "cd '$path'; $this_script_name ".join(" ", @cmd));
+
