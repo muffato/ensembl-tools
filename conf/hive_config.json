@@ -1,13 +1,13 @@
 {
     "Meadow" : {    # configure Meadow-specific options here:
         "LSF" : {
-            "TotalRunningWorkersMax"    : 10000,
-	  },
+            "TotalRunningWorkersMax"    : 10000
+        },
         "LOCAL" : {
-            "TotalRunningWorkersMax"   : 4,
-	  }
+            "TotalRunningWorkersMax"   : 4
+        }
     },
     "Graph" : {     # configure diagram-generation options here:
-	  "DuplicateTables"       : 1,
+	  "DuplicateTables"       : 1
     }
 }
