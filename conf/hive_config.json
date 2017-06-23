@@ -1,5 +1,5 @@
 {
-    "Meadow" : {    # configure Meadow-specific options here:
+    "Meadow" : {
         "LSF" : {
             "TotalRunningWorkersMax"    : 10000
         },
@@ -7,7 +7,7 @@
             "TotalRunningWorkersMax"   : 4
         }
     },
-    "Graph" : {     # configure diagram-generation options here:
+    "Graph" : {
 	  "DuplicateTables"       : 1
     }
 }
