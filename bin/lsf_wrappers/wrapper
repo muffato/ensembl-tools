@@ -7,10 +7,17 @@ use File::Basename ();
 
 my $this_script_name = File::Basename::basename($0);
 
+my %shell_characters = map {$_ => 1} qw(< > |);
+
 my @cmd;
 foreach my $a (@ARGV) {
     $a =~ s/\/home\/matthieu/\/homes\/muffato/g;
-    push @cmd, $a;
+    if ($shell_characters{$a} or $a =~ /^[a-zA-Z0-9_\/\-]+\z/) {
+        push @cmd, $a;
+    } else {
+        $a =~ s/'/'\\''/g;
+        push @cmd, "'$a'";
+    }
 }
 
 my $path = $ENV{PWD};
