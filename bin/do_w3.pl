@@ -14,8 +14,9 @@ if ($0 =~ /w3_([^\/]*)$/) {
         my $dev_name = $1;
         my $hostname = hostname;
         my $username = getpwuid( $< );
-        print join(' ', 'ssh', $username.'@'.$hostname, 'workspace/src/'.$dev_name.'/ensembl-webcode/ctrl_scripts/'.$command), "\n";
-        exec('ssh', $username.'@'.$hostname, 'workspace/src/'.$dev_name.'/ensembl-webcode/ctrl_scripts/'.$command);
+        $username =~ s/ens_adm/w3_ens/;
+        print join(' ', 'ssh', $username.'@'.$hostname, 'workspace/src/'.$dev_name.'/ensembl-webcode/ctrl_scripts/'.$command, @ARGV), "\n";
+        exec('ssh', $username.'@'.$hostname, 'workspace/src/'.$dev_name.'/ensembl-webcode/ctrl_scripts/'.$command, @ARGV);
     } else {
         die "Cannot recognize the path '$d'\n";
     }
