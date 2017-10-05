@@ -1,9 +1,6 @@
 {
     "Meadow" : {
         "CleanupTempDirectoryKilledWorkers" : 1,
-        "LSF" : {
-            "TotalRunningWorkersMax"    : 10000
-        },
         "LOCAL" : {
             "TotalRunningWorkersMax"   : 4
         }
