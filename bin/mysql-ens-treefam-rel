@@ -1,0 +1,6 @@
+#!/usr/bin/env perl
+ 
+ use File::Basename;
+ use lib $ENV{HOME}.'/workspace/mysql-cmds/ensembl/lib';
+ use ScriptFunc;
+ run_mysql(qw(mysql-ens-treefam-rel 4402 ensro ));
