@@ -23,6 +23,7 @@ foreach my $a (@ARGV) {
 my $path = $ENV{PWD};
 $path =~ s/\/home\/matthieu/\/homes\/muffato/;
 
-my $gate = `cat /sys/class/net/eth0/carrier` =~ /1/ ? 'ebi-cli.ebi.ac.uk' : 'ebi-cli.ebi.ac';
+my $ethernet_status_file = '/sys/class/net/eth0/carrier';
+my $gate = ((-r $ethernet_status_file) and (`cat $ethernet_status_file` =~ /1/)) ? 'ebi-cli.ebi.ac.uk' : 'ebi-cli.ebi.ac';
 exec('/usr/bin/ssh', '-qtX', $gate,  "cd '$path'; $this_script_name ".join(" ", @cmd));
 
