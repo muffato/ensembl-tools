@@ -2,12 +2,12 @@
 
 set -e
 
-if [ -z "$PERL_BIN_ENV" ]
+if [ -z "$1" ]
 then
-	echo '$PERL_BIN_ENV not set'
+	echo 'Usage: $0 <name_of_perl_env>'
 	exit 1
 fi
 
-rm -rf "$HOME/src/local/perl/$PERL_BIN_ENV"
+rm -rf "$HOME/src/local/perl/$1"
 curl -L http://cpanmin.us | perl - App::cpanminus
 
