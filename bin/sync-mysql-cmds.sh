@@ -4,13 +4,13 @@ set -e
 
 MY_DIR="$HOME/workspace/mysql-cmds"
 SHARED_DIR="$ENSEMBL_SOFTWARE_HOME/../mysql-cmds"
-for group in ensembl ensemblgenomes
+for group in ensembl ensemblgenomes parasite vectorbase
 do
 	echo "Working on group $group"
 	cd "$SHARED_DIR/$group"
 	for user in *
 	do
-		if [[ -r $user && $user != "lib" ]]
+		if [[ -r $user && -d $user && $user != "lib" && $user != "mysql-eg-mirror" && $user != "ensprod" ]]
 		then
 			echo "Working on user $user"
 			mkdir -p "$MY_DIR/$group/$user"
@@ -24,7 +24,7 @@ do
 					then
 						cp -d "$db" "$MY_DIR/$group/$user/$db"
 					else
-						sed "s|'/nfs/software/ensembl|\$ENV{HOME}.'/workspace|" "$db" > "$MY_DIR/$group/$user/$db"
+						sed "s|'/nfs/software/ensembl.*/lib|\$ENV{HOME}.'/workspace/mysql-cmds|" "$db" > "$MY_DIR/$group/$user/$db"
 						touch --reference "$db" "$MY_DIR/$group/$user/$db"
 						chmod 750 "$MY_DIR/$group/$user/$db"
 					fi
@@ -41,5 +41,17 @@ do
 			cd "$SHARED_DIR/$group"
 		fi
 	done
+        rm -f "$MY_DIR/$group/bin/"*.ebi.ac.uk*
+done
+
+# Additional cleanup
+rm -f "$MY_DIR/ensemblgenomes/"*/mysql-eg-prod-vb
+
+# Make a super bin/ directory
+mkdir -p "$MY_DIR/bin"
+cd "$MY_DIR"
+for db in */bin/*
+do
+    ln -sf ../$db bin/
 done
 
