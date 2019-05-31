@@ -3,6 +3,17 @@
         "CleanupTempDirectoryKilledWorkers" : 1,
         "LOCAL" : {
             "TotalRunningWorkersMax"   : 4
+        },
+        "DockerSwarm" : {
+            "ImageName"     : "ensemblorg/ensembl-hive-docker-swarm",
+            "RunWorkerPath" : "/repo/ensembl-hive/scripts/",
+            "Mounts"        : [
+                {
+                    "Type"      : "bind",
+                    "Source"    : "/home/matthieu/workspace/src/hive_contrib/master/ensembl-hive-docker-swarm",
+                    "Target"    : "/repo/ensembl-hive-docker-swarm"
+                }
+            ]
         }
     }
 }
