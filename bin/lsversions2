@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+[ $# -lt 2 ] && { echo "Usage: $0 sub_dir_name dir_name1 [dir_name2 ...]"; exit 1; }
+
+r="$1"
+shift
+for i in "$@"
+do
+	if [ -d "$i" ] && [ ! -L "$i" ] && [ -d "$i/$r" ] && [ -d "$i/$r/.git" ]
+	then
+		if [ -L "$i/$r" ]
+		then
+			echo -e "\033[01;39m${i}/${r} is a symlink to $(readlink "$i/$r"), which is $(readlink -m "$i/$r")\033[00m"
+		else (
+			echo -e "\033[01;39m${i}/${r}\033[00m"
+			cd "$i/$r"
+			git status
+		) fi
+		echo
+	fi
+done
+

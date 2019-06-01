@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+[ $# -eq 0 ] && { echo "Usage: $0 dir_name1 [dir_name2 ...]"; exit 1; }
+
+for i in "$@"
+do
+	[ -d "$i" ] && [ ! -L "$i" ] && [ -e "$i/.git" ] && (
+		echo -e "\033[01;39m${i}\033[00m"
+		cd "$i"
+		git status
+		echo
+	)
+done
+
