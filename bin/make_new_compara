@@ -1,0 +1,11 @@
+#!/bin/sh
+
+test -z "$1" && { echo "Usage: $0 <branch_name>"; exit 1; }
+
+name="$1"
+shift
+cd "$CVS_MATT"
+cp -a .empty_compara "$name"
+copy_git_checkout ensembl/ensembl-compara "$name/ensembl-compara" "$name" "$@"
+ln -s ../.template_ensembl "$HOME/workspace/src/.modules/ensembl/$name"
+#cd "$name/ensembl-compara"

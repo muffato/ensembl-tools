@@ -1,0 +1,10 @@
+#!/bin/sh
+
+test -z "$1" && { echo "Usage: $0 <branch_name>"; exit 1; }
+
+name="$1"
+shift
+cd "$CVS_MATT/hive"
+copy_git_checkout master "$name" "$name" "$@"
+ln -s ../.template_hive "$HOME/workspace/src/.modules/hive/$name"
+#cd "$name"
