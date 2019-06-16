@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in $(seq 1 7)
+do
+	server="mysql-ens-genebuild-prod-$i"
+	"$server" -N <<< "SHOW DATABASES LIKE '%$1%'" | sed "s/^/$server /"
+done
