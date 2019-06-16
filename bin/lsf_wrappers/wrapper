@@ -7,6 +7,8 @@ use File::Basename ();
 
 my $this_script_name = File::Basename::basename($0);
 
+die "Cannot run $this_script_name directly\n" unless -l $0;
+
 my %shell_characters = map {$_ => 1} qw(< > |);
 
 my @cmd;
