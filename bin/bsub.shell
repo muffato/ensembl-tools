@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ -z "${1//[0-9]}" ] && [ -n "$1" ]
+then
+	mem=$1
+	shift
+else
+	mem=4000
+fi
+exec bsub.mem3 "$mem" "$@" -Is "$SHELL"

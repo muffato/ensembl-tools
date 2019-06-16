@@ -1,0 +1,5 @@
+#!/bin/sh
+for i in $(bjobs -w | tail -n +2 | awk '$3!="PEND" {print $6}' | sed 's/^[0-9]\+\*//' | sort -u)
+do
+	timeout 20s ssh "$i" ps fux > /dev/null || echo "$i"
+done 2> /dev/null

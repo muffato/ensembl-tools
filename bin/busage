@@ -1,0 +1,3 @@
+#!/bin/sh
+busers | head -n 1
+busers all | tail -n+2 | sort -k6,6nr | awk 'NR<='"${1:-15}"' || $1=="mm14" || $1=="muffato"'

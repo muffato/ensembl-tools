@@ -1,0 +1,2 @@
+#!/bin/sh
+bjobs -w "$@" | awk 'NR>=2 {s=$2" "$3" "$4; for(i=7; i<=(NF-3); i++){s=s" "$i}; print s }' | sed 's/\[.*//' | sed 's/-\([0-9]\+_\)\?[0-9]\+$//' | awk 'BEGIN{OFS="\t"}{n[$0]++} END{for(x in n){print n[x],x}}'

@@ -1,0 +1,12 @@
+#!/bin/bash
+if [[ $# -gt 0 ]]
+then
+	if [ -z "${1//[0-9]}" ] && [ -n "$1" ]
+	then
+		mem=$1
+		shift
+		exec bsub "-M${mem}" -R"'select[mem>${mem}] rusage[mem=${mem}]'" "$@"
+	fi
+fi
+echo "Syntax bsub.mem3 mem_megs command [arg1] ..."
+exit 1
