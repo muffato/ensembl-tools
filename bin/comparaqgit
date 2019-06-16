@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd "$CVS_MATT/ensembl/ensembl-compara"
+exec git qgit
+
