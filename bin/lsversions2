@@ -2,7 +2,8 @@
 
 set -e
 
-[ $# -lt 2 ] && { echo "Usage: $0 sub_dir_name dir_name1 [dir_name2 ...]"; exit 1; }
+[ $# -eq 0 ] && { echo "Usage: $0 sub_dir_name dir_name1 [dir_name2 ...]"; exit 1; }
+[ $# -eq 1 ] && exec "$0" "$1" "$CVS_MATT"/*
 
 r="$1"
 shift
