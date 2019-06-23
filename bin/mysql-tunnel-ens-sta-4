@@ -1,0 +1,7 @@
+#!/usr/bin/env perl
+ 
+ use File::Basename;
+ use lib $ENV{HOME}.'/workspace/mysql-cmds';
+ use ScriptFunc;
+ my @args = qw(localhost 4494 ensro);
+ run_mysql(@args);
