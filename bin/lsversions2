@@ -2,7 +2,21 @@
 
 set -e
 
-[ $# -eq 0 ] && { echo "Usage: $0 sub_dir_name dir_name1 [dir_name2 ...]"; exit 1; }
+if [ $# -eq 0 ]
+then
+	if [ "${PWD##$CVS_MATT}" != "$PWD" ]
+	then
+		d=$(relative_path "$PWD" "$CVS_MATT")
+		IFS='/' read -r -a array <<< "$d"
+		if [ "${array[1]}" != "" ]
+		then
+			exec "$0" "${array[1]}" "$CVS_MATT"/*
+		fi
+	fi
+	echo "Usage: $0 sub_dir_name dir_name1 [dir_name2 ...]"
+	exit 1
+fi
+
 [ $# -eq 1 ] && exec "$0" "$1" "$CVS_MATT"/*
 
 r="$1"
