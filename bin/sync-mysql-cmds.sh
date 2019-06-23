@@ -4,7 +4,7 @@ set -e
 
 MY_DIR="$HOME/workspace/mysql-cmds"
 SHARED_DIR="$ENSEMBL_SOFTWARE_HOME/../mysql-cmds"
-for group in ensembl ensemblgenomes parasite vectorbase
+for group in ensembl parasite vectorbase
 do
 	echo "Working on group $group"
 	cd "$SHARED_DIR/$group"
