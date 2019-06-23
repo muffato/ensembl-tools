@@ -36,7 +36,7 @@ do
 			cd "$MY_DIR/$group/$user"
 			for db in mysql-*
 			do
-				[[ -e "$db" && ! -e $SHARED_DIR/$group/$user/$db ]] && echo "$group/$user/$db has disappeared upstream"
+				[[ -e "$db" && ! -e $SHARED_DIR/$group/$user/$db ]] && echo "$group/$user/$db has disappeared upstream" && rm "$db"
 			done
 			cd "$SHARED_DIR/$group"
 		fi
