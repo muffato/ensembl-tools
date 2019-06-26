@@ -13,8 +13,8 @@ die "Unrecognized mode '$mode'" unless $modes{$mode};
 
 ## Load the registry automatically
 my $reg = "Bio::EnsEMBL::Registry";
-#$reg->load_registry_from_url('mysql://anonymous@ensembldb.ensembl.org');
-$reg->load_registry_from_url('mysql://ensro@mysql-ens-mirror-1.ebi.ac.uk:4240/96');
+$reg->load_registry_from_url('mysql://anonymous@ensembldb.ensembl.org');
+#$reg->load_registry_from_url('mysql://ensro@mysql-ens-mirror-1.ebi.ac.uk:4240/');
 
 # Get the Compara Adaptor for MethodLinkSpeciesSet
 my $method_link_species_set_adaptor = Bio::EnsEMBL::Registry->get_adaptor("Multi", "compara", "MethodLinkSpeciesSet");
