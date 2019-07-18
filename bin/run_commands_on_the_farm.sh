@@ -10,6 +10,13 @@ pipeline_name="cmd_${cmd_name}_${timestamp}"
 pipeline_url="$("$server" details url "${USER}_${pipeline_name}")"
 capacity=${3:-5}
 
+trap ctrl_c INT
+
+function ctrl_c() {
+    echo; echo "Database URL: $pipeline_url"; echo
+    exit 1
+}
+
 module unload hive
 module load hive
 init_pipeline.pl Bio::EnsEMBL::Hive::Examples::Factories::PipeConfig::RunListOfCommandsOnFarm_conf -capacity $capacity -inputfile "$cmd_file" -pipeline_url "$pipeline_url"
