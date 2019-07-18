@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd "$CVS_MATT/hive/master"
-exec git qgit
+exec git qgit > /dev/null 2> /dev/null
 
