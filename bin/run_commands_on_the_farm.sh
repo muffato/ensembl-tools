@@ -14,4 +14,5 @@ module unload hive
 module load hive
 init_pipeline.pl Bio::EnsEMBL::Hive::Examples::Factories::PipeConfig::RunListOfCommandsOnFarm_conf -capacity $capacity -inputfile "$cmd_file" -pipeline_url "$pipeline_url"
 runWorker.pl -url "$pipeline_url" -job_id 1
+beekeeper.pl -url "$pipeline_url" -loop
 
