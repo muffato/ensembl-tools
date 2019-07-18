@@ -7,7 +7,7 @@ cmd_file=$(realpath "$2")
 cmd_name=$(basename "$cmd_file")
 timestamp="$(date '+%Y-%m-%d_%H-%M-%S')"
 pipeline_name="cmd_${cmd_name}_${timestamp}"
-pipeline_url="$("$server" details url "$USER_$pipeline_name")"
+pipeline_url="$("$server" details url "${USER}_${pipeline_name}")"
 capacity=${3:-5}
 
 module unload hive
