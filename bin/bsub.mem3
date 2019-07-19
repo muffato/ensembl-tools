@@ -5,7 +5,7 @@ then
 	then
 		mem=$1
 		shift
-		exec bsub "-M${mem}" -R"'select[mem>${mem}] rusage[mem=${mem}]'" "$@"
+		exec bsub "-M${mem}" -R"'select[mem>${mem}] rusage[mem=${mem}] span[hosts=1]'" "$@"
 	fi
 fi
 echo "Syntax bsub.mem3 mem_megs command [arg1] ..."
