@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 
 MY_DIR="$HOME/workspace/mysql-cmds"
 SHARED_DIR="$ENSEMBL_SOFTWARE_HOME/../mysql-cmds"

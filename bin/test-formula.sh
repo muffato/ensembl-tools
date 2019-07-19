@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 
 tempdir=$(mktemp -d)
 filename=$(basename "$1")

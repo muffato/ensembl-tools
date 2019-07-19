@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 
 [ $# -eq 0 ] && { echo "Usage: $0 dir_name1 [dir_name2 ...]"; exit 1; }
 
