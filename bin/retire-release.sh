@@ -8,7 +8,7 @@ mv "rel$1" legacy
 	rm -f reg*staging*.srl reg*mirror*srl vertannot.srl
 	# We assume that ensembl-analysis is now out of reach
 	rm -rf -- */.git
-	for i in ensembl-analysis ensembl-taxonomy
+	for i in ensembl-analysis ensembl-taxonomy ensembl-vep
 	do
 		ln -sf ../../ensembl/$i
 	done
