@@ -3,11 +3,29 @@
 if [[ $# -gt 0 ]]
 then
 	user=$1
+        shift
 else
 	user="muffato"
 fi
 
+find_db() {
 for i in mysql-ens-compara-prod-1 mysql-ens-compara-prod-2 mysql-ens-compara-prod-3 mysql-ens-compara-prod-4 mysql-ens-compara-prod-5 mysql-ens-compara-prod-6 mysql-ens-compara-prod-7 mysql-ens-compara-prod-8
 do
 	${i} -N <<< "SHOW DATABASES LIKE '${user}%'" | sed "s/^/${i} /"
 done
+}
+
+if [[ $# -gt 0 ]]
+then
+    filter_db="grep '$1'"
+    shift
+    while [[ $# -gt 0 ]]
+    do
+        filter_db="${filter_db} | grep '$1'"
+        shift
+    done
+    find_db | eval ${filter_db}
+else
+    find_db
+fi
+
