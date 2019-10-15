@@ -1,0 +1,3 @@
+#!/bin/bash
+
+"$(dirname "$0")/registry_db_cmd.sh" staging staging "$@"
