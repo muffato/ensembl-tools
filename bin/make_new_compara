@@ -1,6 +1,6 @@
 #!/bin/sh
 
-test -z "$1" && { echo "Usage: $0 <branch_name>"; exit 1; }
+test -z "$1" && { echo "Usage: $0 <checkout_name> [<branch_name>]"; exit 1; }
 
 name="$1"
 shift
