@@ -2,6 +2,8 @@
 
 [ $# -lt 2 -o $# -gt 3 ] && { echo "Usage: $0 mysql-server command_file [capacity]"; exit 1; }
 
+[ -e "$2" ] || { echo "Error: file '$2' doesn't exist"; exit 1; }
+
 server="$1"
 cmd_file=$(realpath "$2")
 cmd_name=$(basename "$cmd_file")
