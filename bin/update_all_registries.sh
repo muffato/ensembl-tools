@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/bash -i
 
 set -euo pipefail
 
 update_registry () {
-	hecho "$2"
+	hecho "$1/$2"
 	"$(dirname "$0")/registry_db_cmd.pl" "$1" "$2" _
 	echo
 }
