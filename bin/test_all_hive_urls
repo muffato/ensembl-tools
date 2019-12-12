@@ -3,5 +3,7 @@
 set -eu
 for i in $EHIVE_TEST_PIPELINE_URLS
 do
+	echo "** $i"
 	env "EHIVE_TEST_PIPELINE_URLS=$i" prove -r "$EHIVE_ROOT_DIR/t"
+	echo
 done
