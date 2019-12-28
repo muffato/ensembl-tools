@@ -17,14 +17,7 @@ done
 
 if [[ $# -gt 0 ]]
 then
-    filter_db="grep '$1'"
-    shift
-    while [[ $# -gt 0 ]]
-    do
-        filter_db="${filter_db} | grep '$1'"
-        shift
-    done
-    find_db | eval ${filter_db}
+    find_db | multigrep "$@"
 else
     find_db
 fi
