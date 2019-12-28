@@ -11,7 +11,7 @@ mv "rel$1" legacy
 	# We assume that ensembl-analysis is now out of reach
 	rm -rf -- */.git
         rm -rf ensj-healthcheck/target
-	for i in ensembl-analysis ensembl-taxonomy ensembl-vep
+	for i in ensembl-analysis ensembl-taxonomy
 	do
 		ln -sf ../../ensembl/$i
 	done
