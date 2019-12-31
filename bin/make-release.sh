@@ -17,7 +17,7 @@ do
 	if [[ -e "$release_dir/$repo" ]]
 	then
 		echo "$repo already exists"
-	elif git --git-dir "${CVS_MATT}/ensembl/$repo/.git" show-ref --quiet --verify -- "refs/remotes/ensembl-git/$release_number"
+	elif git --git-dir "${CVS_MATT}/ensembl/$repo/.git" show-ref --quiet --verify -- "refs/remotes/ensembl-github/release/$release_number"
 	then
 		hecho "$repo"
 		copy_git_checkout "${CVS_MATT}/ensembl/$repo" "$release_dir/$repo" "release/$release_number"
