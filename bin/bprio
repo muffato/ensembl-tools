@@ -1,3 +1,3 @@
 #!/bin/sh
-bhpart | head -n 5
-bhpart | tail -n+6 | tac | awk 'NR<='${1:-15}' || $1=="muffato" || $1=="cristig" || $1=="compara_ensembl" || $1=="carlac" || $1=="jalvarez" || $1=="dthybert"'
+bhpart | awk 'NR==5'
+bhpart | tail -n+6 | awk '$1=="HOST_PARTITION_NAME:" {exit} {print}' | tac | awk 'NR<='${1:-15}' || $1=="muffato" || $1=="cristig" || $1=="compara_ensembl" || $1=="carlac" || $1=="jalvarez" || $1=="dthybert"'
