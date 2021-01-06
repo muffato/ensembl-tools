@@ -6,6 +6,12 @@ sql3='SELECT COUNT(*) FROM worker'
 sql4='SELECT ROUND(SUM(TIMESTAMPDIFF(SECOND, when_born, when_died))/3600/24,1) FROM worker'
 sql5='SELECT ROUND((TIMESTAMPDIFF(SECOND, MIN(min_when_submitted), MAX(max_when_died))-SUM(g))/3600/24,1) FROM (SELECT GREATEST(TIMESTAMPDIFF(SECOND, MAX(w2.when_died), w1.when_submitted),0) AS g, MIN(w1.when_submitted) AS min_when_submitted, MAX(w1.when_died) AS max_when_died FROM worker w1 JOIN worker w2 ON w2.worker_id < w1.worker_id AND w2.when_submitted < w1.when_submitted GROUP BY w1.when_submitted) _t'
 
+
+## More memory in case the databases are big
+sql_s1='SET SESSION max_heap_table_size=10000000000;'
+sql_s2='SET SESSION tmp_table_size=10000000000;'
+sql5="$sql_s1; $sql5; $sql_s2"
+
 while read -r server dbname
 do
     if $server $dbname -e 'SELECT 1 FROM job LIMIT 1' > /dev/null 2> /dev/null
