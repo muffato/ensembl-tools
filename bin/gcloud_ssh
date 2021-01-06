@@ -1,0 +1,2 @@
+#!/bin/sh
+exec gcloud beta compute ssh g2-login0 --tunnel-through-iap

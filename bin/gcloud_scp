@@ -1,0 +1,2 @@
+#!/bin/sh
+exec gcloud beta compute scp --tunnel-through-iap "$@"
