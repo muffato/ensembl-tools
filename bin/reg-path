@@ -1,0 +1,7 @@
+#!/bin/bash
+
+[ $# -lt 1 ] && { echo "Usage: $0 division_name" 1>&2; exit 1; }
+[ -z "$ENSEMBL_CVS_ROOT_DIR" ] && { echo "\$ENSEMBL_CVS_ROOT_DIR must be set" 1>&2; exit 1; }
+REG_PATH="$ENSEMBL_CVS_ROOT_DIR/ensembl-compara/conf/$1/production_reg_conf.pl"
+[ -e "$REG_PATH" ] || { echo "$REG_PATH doesn't exist" 1>&2; exit 1; }
+echo "$REG_PATH"
