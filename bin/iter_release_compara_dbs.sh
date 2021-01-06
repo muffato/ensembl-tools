@@ -8,7 +8,7 @@ fi
 server=${4:-mysql-ensembl}
 which "$server" > /dev/null 2> /dev/null || { echo "Server '$server' not found"; exit 1; }
 
-for r in $(seq "${2:-86}" "${3:-99}")
+for r in $(seq "${2:-86}" "${3:-105}")
 do
     db=$(printf 'ensembl_compara_%d' "$r")
     if $server "$db" -e 'SELECT 1' > /dev/null 2> /dev/null
