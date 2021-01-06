@@ -6,7 +6,9 @@
         },
         "LSF" : {
             "EBI" : {
-                "BaseTempDirectory" : "/scratch"
+                "_BaseTempDirectory" : "/scratch",
+                "__BaseTempDirectory" : "/gpfs/nobackup/ensembl/muffato/tmp",
+                "___BaseTempDirectory" : "/hps/nobackup2/production/ensembl/muffato/tmp"
             }
         },
         "DockerSwarm" : {
