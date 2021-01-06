@@ -6,7 +6,7 @@
 
 server="$1"
 cmd_file=$(realpath "$2")
-cmd_name=$(basename "$cmd_file")
+cmd_name=$(basename "$cmd_file" | tr . _)
 timestamp="$(date '+%Y-%m-%d_%H-%M-%S')"
 pipeline_name="cmd_${cmd_name}_${timestamp}"
 pipeline_url="$("$server" details url "${USER}_${pipeline_name}")"
