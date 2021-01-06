@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[ $# -eq 0 ] && { echo "Usage: $0 query [lsebidb_filters]"; exit 1; }
+
+query="$1"
+shift
+lsebidb "$@" | while read -r server db; do
+    $server $db -Nqe "$query" | sed "s/^/$server\t$db\t/"
+done
+
